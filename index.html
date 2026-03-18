@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Hacklenmiş Mesaj</title>
+<style>
+  body {
+    background-color: black;
+    color: #00ff00;
+    font-family: monospace;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  #terminal {
+    white-space: pre;
+    padding: 20px;
+    font-size: 18px;
+  }
+  .heart {
+    color: #ff0066;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div id="terminal"></div>
+
+<script>
+const terminal = document.getElementById("terminal");
+
+// Hackleniyormuş gibi açılış mesajları
+const hackMessages = [
+  "Bağlantı kuruluyor...",
+  "Güvenlik delikleri aranıyor...",
+  "Şifreler kırılıyor...",
+  "Veriler yükleniyor..."
+];
+
+let i = 0;
+function showHack() {
+  if (i < hackMessages.length) {
+    terminal.innerHTML += hackMessages[i] + "\n";
+    i++;
+    setTimeout(showHack, 1000);
+  } else {
+    setTimeout(showHearts, 1000);
+  }
+}
+
+// Romantik mesaj ve kalpler
+function showHearts() {
+  terminal.innerHTML = "==> !!! GİZLİ MESAJ YÜKLENİYOR !!! <==\n\n";
+  let count = 0;
+  const interval = setInterval(() => {
+    terminal.innerHTML += "<span class='heart'>Seni seviyorum ❤️</span>\n";
+    count++;
+    terminal.scrollTop = terminal.scrollHeight;
+    if(count > 2000){ // milyonlarca değil ama binlerce akış efekti
+      clearInterval(interval);
+      terminal.innerHTML += "\n❤️ ❤️ ❤️ SONSUZA KADAR SENİ SEVİYORUM ❤️ ❤️ ❤️";
+    }
+  }, 1);
+}
+
+showHack();
+</script>
+</body>
+</html>
